@@ -1,0 +1,75 @@
+###############################################################################
+# Replace
+# ismh the name of the gunicorn file you want
+# rolf_ismh your user name
+# raizapp the folder name of your project
+# raiz the folder name where you find a file called wsgi.py
+#
+###############################################################################
+# Criando o arquivo ismh.socket
+sudo nano /etc/systemd/system/ismh.socket
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=gunicorn ismh socket
+
+[Socket]
+ListenStream=/run/ismh.socket
+
+[Install]
+WantedBy=sockets.target
+
+###############################################################################
+# Criando o arquivo ismh.service
+sudo nano /etc/systemd/system/ismh.service
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=Gunicorn daemon (You can change if you want)
+Requires=ismh.socket
+After=network.target
+
+[Service]
+User=rolf_ismh
+Group=www-data
+Restart=on-failure
+# EnvironmentFile=/home/rolf_ismh/raizapp/.env
+WorkingDirectory=/home/rolf_ismh/raizapp
+# --error-logfile --enable-stdio-inheritance --log-level and --capture-output
+# are all for debugging purposes.
+ExecStart=/home/rolf_ismh/raizapp/venv/bin/gunicorn \
+          --error-logfile /home/rolf_ismh/raizapp/gunicorn-error-log \
+          --enable-stdio-inheritance \
+          --log-level "debug" \
+          --capture-output \
+          --access-logfile - \
+          --workers 6 \
+          --bind unix:/run/ismh.socket \
+          raiz.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+###############################################################################
+# Ativando
+sudo systemctl start ismh.socket
+sudo systemctl enable ismh.socket
+
+# Checando
+sudo systemctl status ismh.socket
+curl --unix-socket /run/ismh.socket localhost
+sudo systemctl status ismh
+
+# Restarting
+sudo systemctl restart ismh.service
+sudo systemctl restart ismh.socket
+sudo systemctl restart ismh
+
+# After changing something
+sudo systemctl daemon-reload
+
+# Debugging
+sudo journalctl -u ismh.service
+sudo journalctl -u ismh.socket

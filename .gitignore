@@ -94,7 +94,7 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
-static/
+
 media/
 project/local_settings.py
 
