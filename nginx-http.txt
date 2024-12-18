@@ -3,7 +3,7 @@
 # REPLACES
 # 145.223.95.176 = Replace with your domain
 # /home/rolf_ismh/raizapp = Replace with the path to the folder for the project
-# /home/rolf_ismh/data/web/static = Replace with the path to the folder for static files
+# /home/rolf_ismh/raizapp/inicio/static = Replace with the path to the folder for static files
 # /home/rolf_ismh/data/web/media = Replace with the path to the folder for media files
 # ismh = Replace with your unix socket name (don't add .socket)
 # 
@@ -20,10 +20,10 @@ server {
   # Add index.php to the list if you are using PHP
   index index.html index.htm index.nginx-debian.html index.php;
   
-  # ATTENTION: /home/rolf_ismh/data/web/static
+  # ATTENTION: /home/rolf_ismh/raizapp/inicio/static
   location /static {
     autoindex on;
-    alias /home/rolf_ismh/data/web/static;
+    alias /home/rolf_ismh/raizapp/inicio/static;
   }
 
 #  # ATTENTION: /home/rolf_ismh/data/web/media 

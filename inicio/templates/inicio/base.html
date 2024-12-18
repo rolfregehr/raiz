@@ -1,11 +1,63 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style type="text/css">
+        body {
+            background-color: cadetblue;
+        }
+        
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Container do grid */
+        .grid-container {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 colunas de tamanhos iguais */
+            grid-template-rows: auto;
+            /* Altura automática */
+            width: 90%;
+            /* Ajustável conforme necessário */
+            max-width: 900px;
+            /* Largura máxima */
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Itens do grid */
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            background-color: #0078d7;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 5px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                /* Apenas uma coluna em telas menores */
+            }
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iSMH</title>
-    <link rel="stylesheet" href="{% static 'inicio/css/style.css' %}"></head>
 <body>
     <h1>Alteração concluída com suscesoo</h1>
     <div class="grid-container">
