@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="icon.jpeg" type="image/jpeg">
+
     <style type="text/css">
         body {
             background-color: cadetblue;
@@ -20,17 +22,33 @@
         /* Container do grid */
         .grid-container {
             display: grid;
-            gap: 10px;
+            gap: 5px;
             grid-template-columns: repeat(2, 1fr);
             /* 2 colunas de tamanhos iguais */
             grid-template-rows: auto;
             /* Altura automática */
-            width: 90%;
+            width: 95%;
             /* Ajustável conforme necessário */
-            max-width: 900px;
+            max-width: 1200px;
             /* Largura máxima */
             background: white;
             padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }     
+          .grid-container-inferior {
+            display: grid;
+            gap: 5px;
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 colunas de tamanhos iguais */
+            grid-template-rows: auto;
+            /* Altura automática */
+            width: 100%;
+            /* Ajustável conforme necessário */
+            max-width: 1200px;
+            /* Largura máxima */
+            background: white;
+            padding: 0px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -44,11 +62,34 @@
             background-color: #0078d7;
             color: white;
             font-size: 1.5rem;
-            border-radius: 5px;
+            border-radius: 10px;
         }
-        
+        .grid-item-interno {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            background-color:rgb(65, 145, 69);
+            grid-template-columns: repeat(4, 1fr);
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 10px;
+        }
+        .grid-item-interno-redes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            background-color:rgb(134, 54, 54);
+            grid-template-columns: repeat(2, 1fr);
+            color: white;
+            font-size: 1.5rem;
+            width: 50%;
+            border-radius: 10px;
+            margin: auto;
+        }
         /* Responsividade */
-        @media (max-width: 900px) {
+        @media (max-width: 1200px) {
             .grid-container {
                 grid-template-columns: 1fr;
                 /* Apenas uma coluna em telas menores */
@@ -59,17 +100,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iSMH</title>
 <body>
-    <h1>Alteração concluída com suscesoo</h1>
     <div class="grid-container">
         <div class="grid-item">Painel de dados - em desenvolvimento</div>
         <div class="grid-item">Blog - em desenvolvimento</div>
-        <div class="grid-item">
-            <div class="grid-item">Agressividade</div>
-            <div class="grid-item">Autossuficiência</div>
-            <div class="grid-item">Riscos</div>
-            <div class="grid-item">Outros</div>
-        </div>
-        <div class="grid-item">4</div>
+        <div class="grid-container-inferior">
+            <div class="grid-item-interno">Desprezo pelo feminino</div>
+            <div class="grid-item-interno">Autocontrole</div>
+            <div class="grid-item-interno">Status</div>
+            <div class="grid-item-interno">Rivalidade</div>
+            <div class="grid-item-interno">Agressividade</div>
+            <div class="grid-item-interno">Autossuficiência</div>
+            <div class="grid-item-interno">Riscos</div>
+            <div class="grid-item-interno">Dominação</div>
     </div>
+    <div class="grid-container-inferior">
+        <div class="grid-item-interno-redes">Instagram</div>
+        <div class="grid-item-interno-redes">BlueSky</div>
+        <div class="grid-item-interno-redes">Youtube</div>
+        <div class="grid-item-interno-redes">Facebook</div>
+</div>
+</div>
 </body>
 </html>
