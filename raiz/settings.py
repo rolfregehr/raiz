@@ -119,7 +119,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 # /data/web/static
-STATIC_ROOT = DATA_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -131,3 +131,9 @@ try:
     from raiz.local_settings import *
 except ImportError:
     ...
+
+
+
+print('STATIC_URL: ', STATIC_URL)
+print('STATIC_ROOT: ', STATIC_ROOT)
+print('BASE_DIR: ', BASE_DIR)
